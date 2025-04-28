@@ -89,8 +89,16 @@ body {
     transform: translateY(50%);
 }
 
+/* .nav_right_group {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+} */
 
-
+/* .nav_right {
+    display: flex;
+    gap: 30px;
+} */
 
 #hero {
     /* width: 100%; */
@@ -122,31 +130,73 @@ body {
      1px  1px 0 #fff;
 }
 
-@media (max-width: 1024px) {
+
+.language-switch {
+    position: absolute;
+    top: 32%;
+    right: 30px;
+    /* transform: translateY(-50%); */
+
+}
+
+/* .language-link {
+    transform: translateY(100px 10px);
+} */
+
+.language-link:hover {
+    text-decoration: underline;
+}
+
+
+
+@media (max-width: 1275px) {
     .hero_inner {
-      padding-top: 6%; 
+        padding-top: 6%; 
     }
-  }
+
+    .language-switch {
+        display: block;
+        margin: 25px auto 0 auto;
+        text-align: center;
+    }
+}
 
 @media (max-width: 768px) {
 
-
+    .header_inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-top: 5%; 
+    }
 
     .container {
-        padding-right: 8%;
+        padding-right: 4%;
+        padding-left: 4%;
     }
 
     .header {
-        margin-top: 10%;
+        margin-top: 15%;
     }
 
-    .header_inner {
-        margin-top: 5%; 
+    .nav_left {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+        gap: 10px;
+    }
+
+    .nav_right {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        text-align: right;
+         gap: 10px; 
     }
 
     .nav_list {
       flex-direction: column;
-      align-items: center;
       gap: 10px;
     }
   
@@ -160,7 +210,13 @@ body {
   
     .logo {
       margin-bottom: 20px;
-      transform: translate(0%, -20%);
+      transform: translate(0%, -50%);
+    }
+
+    .language-switch {
+        display: block;
+        margin: 30px auto 0 auto;
+        text-align: center;
     }
 
     .hero_title {
@@ -169,6 +225,33 @@ body {
     }
 
 }
+
+.scroll-down {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 60px;
+    height: 60px;
+    background-color: #000;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: white;
+    font-size: 2rem;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+    opacity: 1;
+}
+
+.scroll-down:hover {
+    opacity: 0.7;
+    cursor: pointer;
+}
+
 
 
 #products {
