@@ -7,80 +7,110 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" href="img/Frame.ico" type="image/x-icon">
     <link rel="stylesheet" href="css/fonts.css">
+    <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style.css">
-    <title>Вкусный Landing</title>
+    <title>Wild souls</title>
 </head>
 
 <body>
-    
-        <div class="topbar">  
-            Бесплатная доставка по России для заказов Wild SOULS от 2000 рублей!
-        </div>
-    <header class="header">
-        <div class="container header_inner">
-            <nav class="nav_left">
-                <ul class="nav_list">
-                    <li class="#">Продукты</a></li>
-                    <li class="#">КТО МЫ</a></li>
-                    <li class="#">НАША ЛАВКА</a></li>
-                </ul>
-            </nav>
-            
-            <div class="logo">
-                <img src="img/hand-logo.svg" alt="Логотип">
+    <div class="wrapper">
+        
+        <header class="header">
+            <div class="topbar">  
+                Бесплатная доставка по России для заказов 
+                Wild SOULS от 2000 рублей!
             </div>
-    
-            <!-- <div class="nav_right_group"> </div> -->
-            <nav class="nav_right">
-                <ul class="nav_list">
-                    <li class="#">РЕЦЕПТЫ</a></li>
-                    <li class="#">ВОЙТИ</a></li>
-                    <li class="#">КОРЗИНА</a></li>
-                </ul>
-            </nav>
 
+            <div class="container">
+                <div class="header__inner">
+                    <nav class="header__nav header__nav-left">
+                        <ul class="header__nav-list">
+                            <li class="header__nav-item">
+                                <a class="header__nav-link" href="#">ПРОДУКТЫ</a>
+                            </li>
+                            <li class="header__nav-item">
+                                <a class="header__nav-link" href="#">КТО МЫ</a>
+                            </li>
+                            <li class="header__nav-item">
+                                <a class="header__nav-link" href="#">НАША ЛАВКА</a>
+                            </li>
+                        </ul>
+                    </nav>
+                    
+                    <div class="header__logo-hover">
+                        <a class="header__logo logo" href="#">
+                            <img src="img/hand-logo.svg" alt="logo">
+                        </a>
+                        <a class="header__logo logo-hover" href="#">
+                            <img src="img/logo-hover.svg" alt="logo-hover">
+                        </a>
+                    </div>
             
-        </div>
+                    <nav class="header__nav header__nav-right">
+                        <ul class="header__nav-list">
+                            <li class="header__nav-item">
+                                <a class="header__nav-link" href="#">РЕЦЕПТЫ</a>
+                            </li>
+                            <li class="header__nav-item">
+                                <a class="header__nav-link" href="#">ВОЙТИ</a>
+                            </li>
+                            <li class="header__nav-item">
+                                <a class="header__nav-link" href="#">
+                                    ТОВАРЫ
+                                <span class="header__cart-badge">(0)</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
 
-        <div class="language-switch">
-            <a href="#" class="language-link">RU</a>
-        </div>
+                </div>
+                
+                <div class="header__language-switch">
+                    <a class="header__language-link" href="#">RU</a>
+                </div>
+            </div>
 
-    </header>
+        </header>
 
-    <section id="hero">
-        <div class="container hero_inner">
-            <h1 class="hero_title">
-                Попробуйте Дикую природу.<br> Найдите свою душу.
-            </h1>
-        </div>
+        <section class="hero">
+            <div class="container">
+                <div class="hero__inner">
+                    <h1 class="hero__title">
+                        <!-- Taste the Wild. <br> 
+                        Find your Soul.<br>  -->
+                        Почувствуй Природу. <br> 
+                        Ощути свою душу.
+                    </h1>
+                </div>
+            </div>
 
 
-        <a href="#products" class="scroll-down">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="12" y1="5" x2="12" y2="19"></line>
-                <polyline points="19 12 12 19 5 12"></polyline>
-            </svg>
-        </a>
-    </section>
+            <a href="#products" class="scroll-down">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <polyline points="19 12 12 19 5 12"></polyline>
+                </svg>
+            </a>
+        </section>
 
-    <section id="products">
-        <div class="container products_inner">
-            <h1 class="hero_title">
-                Дикая любовь
-            </h1>
-            <h5 class="hero_title_two">
-                Вы найдете наши дикорастущие продукты в их самом простом виде. <br>
-                Никакие добавки и прочее не могут испортить их природу
-            </h5>
-        </div>
+        <section id="products">
+            <div class="container products_inner">
+                <h1 class="hero_title">
+                    Дикая любовь
+                </h1>
+                <h5 class="hero_title_two">
+                    Вы найдете наши дикорастущие продукты в их самом простом виде. <br>
+                    Никакие добавки и прочее не могут испортить их природу
+                </h5>
+            </div>
 
-    </section>
+        </section>
 
-    <section id="concept"></section>
+        <section id="concept"></section>
 
-    <section id="recipes"></section>
-    <footer></footer>
+        <section id="recipes"></section>
+        <footer></footer>
+    </div>
 
 </body>
 
