@@ -70,6 +70,14 @@ body {
     /* padding-right: 10%; */
 }
 
+.header__nav-item :hover {
+    text-shadow:
+    -1px -1px 0 lch(100% 0.01 296.81 / 0.459),
+     1px -1px 0 lch(100% 0.01 296.81 / 0.459),
+    -1px  1px 0 lch(100% 0.01 296.81 / 0.459),
+     1px  1px 0 lch(100% 0.01 296.81 / 0.459);
+}
+
 .header__nav-list {
     display: flex;
     gap: 42px;
@@ -135,14 +143,17 @@ body {
     right: 30px;
 }
 
-/* .language-link {
-    transform: translateY(100px 10px);
-} */
+.header__language-switch:hover {
+    text-shadow:
+    -1px -1px 0 lch(100% 0.01 296.81 / 0.459),
+     1px -1px 0 lch(100% 0.01 296.81 / 0.459),
+    -1px  1px 0 lch(100% 0.01 296.81 / 0.459),
+     1px  1px 0 lch(100% 0.01 296.81 / 0.459);
+}
 
 .header__language-link:hover {
     text-decoration: underline;
 }
-
 
 .hero {
     /* width: 100%; */
@@ -179,7 +190,7 @@ body {
 }
 
 @media (max-width: 1275px) {
-    .hero_inner {
+    .hero__inner {
         padding-top: 6%; 
     }
 
@@ -283,7 +294,7 @@ body {
 
 }
 
-.scroll-down {
+.hero__scroll-down {
     position: absolute;
     bottom: 30px;
     left: 50%;
@@ -304,16 +315,54 @@ body {
     opacity: 1;
 }
 
-.scroll-down:hover {
+.hero__scroll-down:hover {
     opacity: 0.7;
     cursor: pointer;
 }
 
 
 
-#products {
+.products {
+    position: relative;
     background-color: #e07b47;
-    padding: 100px 0;
+    padding: 500px 0;
 }
 
+
+.products__circle-text {
+    top: 10%;
+    left: 10%;
+    position: absolute;
+    width: 210px;
+    height: 210px;
+    border-radius: 50%;
+    margin: 0 auto;
+    background-color: black;
+    z-index: 1;
+}
+
+.products__circle-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 50px;
+    font-family: "Roboto", sans-serif;
+    font-weight: bold;
+    z-index: 2;
+}
+
+.products__circle-text span {
+    position: absolute;
+    top: 7%;
+    left: 50%;
+    transform-origin: 0 90px;
+
+    transform: 
+        rotate(calc(var(--i) * var(--step))); 
+    
+    color: white;
+    font-size: 14px;
+}
 
