@@ -468,3 +468,97 @@ body {
     margin-left: 5px;
     margin-top: 15px;
 }
+
+/*scroller-products*/
+.scroller-products {
+    position: relative;
+    overflow: hidden;
+    width: 100vw;
+    padding: 2rem 0;
+    /* background: #f84f5a; */
+}
+
+.scroller-products__scroller {
+    display: flex;
+    gap: 2rem;
+    overflow: auto;
+    scroll-behavior: smooth;
+    padding-left: 2rem;
+    scroll-snap-type: x mandatory;
+}
+
+.scroller-products__scroller::-webkit-scrollbar {
+    height: 8px;
+}
+.scroller-products__scroller::-webkit-scrollbar-thumb {
+    background: rgba(0,0,0,0.3);
+    border-radius: 4px;
+}
+
+.scroller-products__product-items {
+    position: relative;
+    flex: 0 0 auto;
+    width: calc(33.333vw - 4rem);
+    max-width: 360px;
+    background: transparent;
+    padding: 1rem;
+    text-align: center;
+    scroll-snap-align: start;
+    margin-top: 0;
+}
+/* Zigzag offset */
+.scroller-products__product-items:nth-child(even) {
+    margin-top: -70px;
+}
+
+/* Background circles */
+.scroller-products__product-items::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(80% + 1rem);
+    height: calc(80% + 1rem);
+    border-radius: 50%;
+    z-index: -1;
+}
+.scroller-products__product-items:nth-child(3n+1)::before { background: #72A080; }
+.scroller-products__product-items:nth-child(3n+2)::before { background: #A95D50; }
+.scroller-products__product-items:nth-child(3n+3)::before { background: #ABAFD6; }
+
+.scroller-products__product-items img {
+    max-width: 100%;
+    border-radius: 0.5rem;
+    display: block;
+    margin:  auto;
+}
+.scroller-products__product-items h3 {
+    margin: .5rem 0;
+    font-size: 1.1rem;
+}
+.scroller-products__product-items p.scroller-products__price {
+    font-weight: bold;
+    margin-bottom: .5rem;
+}
+
+.btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.5);
+    color: white;
+    border: none;
+    padding: .5rem 1rem;
+    cursor: pointer;
+    border-radius: .25rem;
+}
+.btn.prev { left: 1rem; }
+.btn.next { right: 1rem; }
+
+@media (hover:hover) {
+    .btn { opacity: 0; transition: opacity .2s; }
+}
+
+
+/*end scroller-products*/
