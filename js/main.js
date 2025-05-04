@@ -1,4 +1,5 @@
 (function() {
+    // scroller-products
     const scroller = document.querySelector('.scroller-products__scroller');
     const prevBtn  = document.querySelector('.btn.prev');
     const nextBtn  = document.querySelector('.btn.next');
@@ -47,5 +48,37 @@
             console.log('Height diff:', Math.abs(products[0].offsetHeight - products[1].offsetHeight), 'px');
         }
     });
+    // end scroller-products
+    // animation of slides
+    // const imgs = document.querySelectorAll('.discover__image img');
+    // let idx = 0;
+
+    // setInterval(() => {
+    //     imgs.forEach(i => i.style.opacity = 0);
+    //     imgs[idx].style.transition = 'opacity 0.5s';
+    //     imgs[idx].style.opacity = 1;
+    //     idx = (idx + 1) % imgs.length;
+    // }, 3000);
+
+    const imgs = Array.from(document.querySelectorAll('.discover__image img'));
+    let current = 0;
+
+    setInterval(() => {
+        imgs.forEach((img, i) => {
+            img.classList.remove('discover__img--front');
+            img.classList.remove('discover__img--back2');
+            img.classList.remove('discover__img--back1');
+    }); 
+
+    const prev = (current - 1 + imgs.length) % imgs.length;
+    const next = (current + 1) % imgs.length;
+
+    imgs[prev].classList.add('discover__img--back1');
+    imgs[current].classList.add('discover__img--front');
+    imgs[next].classList.add('discover__img--back2');
+
+    current = next;
+    }, 2000);
+
 })();
 
