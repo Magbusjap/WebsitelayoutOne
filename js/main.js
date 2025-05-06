@@ -50,16 +50,6 @@
     });
     // end scroller-products
     // animation of slides
-    // const imgs = document.querySelectorAll('.discover__image img');
-    // let idx = 0;
-
-    // setInterval(() => {
-    //     imgs.forEach(i => i.style.opacity = 0);
-    //     imgs[idx].style.transition = 'opacity 0.5s';
-    //     imgs[idx].style.opacity = 1;
-    //     idx = (idx + 1) % imgs.length;
-    // }, 3000);
-
     const imgs = Array.from(document.querySelectorAll('.discover__image img'));
     let current = 0;
 
