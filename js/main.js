@@ -70,5 +70,76 @@
     current = next;
     }, 2000);
 
+    
+})();
+
+//=======================================
+
+
+
+;(function() {
+
+    const SLIDES_VISIBLE = 2;
+    const AUTO_INTERVAL  = 3000;
+
+    //const viewport = document.querySelector('.feedback__viewport');
+    const slider   = document.querySelector('.feedback__slider');
+    const slides   = Array.from(document.querySelectorAll('.feedback__slide'));
+    const dots     = Array.from(document.querySelectorAll('.feedback__dot'));
+    const prevBtn  = document.querySelector('.feedback__prev');
+    const nextBtn  = document.querySelector('.feedback__next');
+  
+    const style = getComputedStyle(slides[0]);
+    const gap = parseFloat(style.marginRight);
+    const slideWidth = slides[0].getBoundingClientRect().width + gap;
+  
+    let currentIndex = 0, autoTimer;
+  
+    function goTo(index) {
+        const maxIndex = slides.length - SLIDES_VISIBLE;
+        if (index < 0) index = maxIndex;
+        else if (index > maxIndex) index = 0;
+        currentIndex = index;
+        slider.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+        updateDots();
+    }
+
+    function next() { goTo(currentIndex + 1); }
+    function prev() { goTo(currentIndex - 1); }
+
+    function startAuto() {
+        stopAuto();
+        autoTimer = setInterval(next, AUTO_INTERVAL);
+    }
+    function stopAuto() {
+        if (autoTimer) clearInterval(autoTimer);
+    }
+
+    prevBtn.addEventListener('click', () => { prev(); startAuto(); });
+    nextBtn.addEventListener('click', () => { next(); startAuto(); });
+
+    function updateDots() {
+        dots.forEach((dot,i) => {
+            if (i === currentIndex || i === currentIndex + 1) {
+                dot.classList.add('feedback__dot--active');
+            }
+            else {
+                dot.classList.remove('feedback__dot--active');
+            }
+        });
+    }
+
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            goTo(index);
+            startAuto();
+        })
+    })
+
+    goTo(0);
+    updateDots();
+    startAuto();
+
+
 })();
 

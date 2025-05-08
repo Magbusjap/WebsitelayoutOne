@@ -897,3 +897,132 @@ body {
     margin-left: 0.4em;    
     line-height: 1;
 }
+
+/*===================================*/
+
+.feedback {
+    position: relative;
+    background-color: #e9a8c6;
+    min-height: 618px;
+}
+
+
+.feedback__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* gap: 2rem; */
+}
+
+.feedback__heading {
+    font-family: "Roboto-Bold", sans-serif;
+    font-weight: 400;
+    color: #000;
+    justify-content: center;
+    margin-top: 80px;
+    margin-bottom: 20px;
+}
+
+.feedback__viewport {
+    overflow: hidden;
+}
+
+.feedback__slider {
+    display: flex;
+    flex-direction: row;
+    transition: transform 0.5s ease;
+    gap: 0;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.feedback__slide--first,
+.feedback__slide--second,
+.feedback__slide--third,
+.feedback__slide--fourth {
+    /* flex: 0 0 100%; */
+    box-sizing: border-box;
+    padding: 1.5rem;
+
+}
+
+
+.feedback__slide {
+    flex: 0 0 calc((100% - 30px)/2);
+    display: flex;
+    flex-direction: column;    
+    align-items: center;      
+    text-align: center;     
+}
+
+
+.feedback__slide--lips img {
+    display: block;
+    margin: 0 auto;
+}
+
+.feedback__slide--subtitle {
+    margin-top: 20px;
+    max-width: 250px;
+    overflow-wrap: break-word;
+    color: #000000;
+    font-family: "Roboto-Bold", sans-serif;
+    font-size: 18px;
+    line-height: 27px;
+    font-weight: 700;
+    text-transform: uppercase;
+    position: relative;
+}
+
+.feedback__slide--title {
+    color: #000;
+    margin-top: 12px;
+    max-width: 350px;
+    overflow-wrap: break-word;
+    font-family: "Roboto-Regular", sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+}
+
+.feedback__prev,
+.feedback__next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.5);
+    color: white;
+    border: none;
+    padding: .5rem 1rem;
+    cursor: pointer;
+}
+
+.feedback__prev,
+.feedback__next { 
+    display: none;
+}
+
+.feedback__dot.feedback__dot--active {
+    background: #000;
+}
+
+.feedback__dots {
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 2rem;
+}
+
+.feedback__dot {
+    width:10px;
+    height:10px;
+    box-sizing:border-box;
+    border:1px solid #000;
+    border-radius:2px;
+    background:transparent;
+    cursor:pointer;
+    transition:.25s;
+}
+
+
