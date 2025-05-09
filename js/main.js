@@ -49,31 +49,57 @@
         }
     });
     // end scroller-products
-    // animation of slides
-    const imgs = Array.from(document.querySelectorAll('.discover__image img'));
-    let current = 0;
-
-    setInterval(() => {
-        imgs.forEach((img, i) => {
-            img.classList.remove('discover__img--front');
-            img.classList.remove('discover__img--back2');
-            img.classList.remove('discover__img--back1');
-    }); 
-
-    const prev = (current - 1 + imgs.length) % imgs.length;
-    const next = (current + 1) % imgs.length;
-
-    imgs[prev].classList.add('discover__img--back1');
-    imgs[current].classList.add('discover__img--front');
-    imgs[next].classList.add('discover__img--back2');
-
-    current = next;
-    }, 2000);
-
     
 })();
 
 //=======================================
+(function() {
+
+    function initSlider(root, cfg) {
+        const imgs = Array.from(root.querySelectorAll(cfg.imageSelector));
+        if (!imgs.length) return;
+        let current = 0;
+
+        setInterval(() => {
+            imgs.forEach(img => {
+                img.classList.remove(cfg.clsFront, cfg.clsBack1, cfg.clsBack2);
+            });
+
+            const prev = (current - 1 + imgs.length) % imgs.length;
+            const next = (current + 1) % imgs.length;
+
+            imgs[prev].classList.add(cfg.clsBack1);
+            imgs[current].classList.add(cfg.clsFront);
+            imgs[next].classList.add(cfg.clsBack2);
+
+            current = next;
+        }, cfg.interval);
+    }
+
+    // const blockRoot = document.querySelector('.block');
+    // initSlider(blockRoot, {
+    //     imageSelector: '.block__image img',
+    //     clsFront: 'block__img--front',
+    //     clsBack1: 'block__img--back1',
+    //     clsBack2: 'block__img--back2',
+    //     interval: 2000
+    // });
+
+    document
+        .querySelectorAll('.block')
+        .forEach(root => initSlider(root, {
+            imageSelector: '.block__image img',
+            clsFront: 'block__img--front',
+            clsBack1: 'block__img--back1',
+            clsBack2: 'block__img--back2',
+            interval: 2000
+        }))
+
+})();
+
+
+
+//==============================
 
 
 
@@ -143,3 +169,4 @@
 
 })();
 
+//=======================================
