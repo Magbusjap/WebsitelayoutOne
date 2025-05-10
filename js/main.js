@@ -1,60 +1,55 @@
 (function() {
-    // scroller-products
-    const scroller = document.querySelector('.scroller-products__scroller');
-    const prevBtn  = document.querySelector('.btn.prev');
-    const nextBtn  = document.querySelector('.btn.next');
-    const scrollAmount = scroller.clientWidth * 0.8;
-    let isDown = false;
-    let startX;
-    let scrollLeft;
+    // scroller-products + Photo slider
 
-    prevBtn.addEventListener('click', () => {
-        scroller.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-    });
-    nextBtn.addEventListener('click', () => {
-        scroller.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-    });
+// 1) Универсальная инициализация одного блока
+function initScroller(root) {
+  const scroller = root.querySelector('.blockScroller__scroller');
+  const prevBtn  = root.querySelector('.btn.prev');
+  const nextBtn  = root.querySelector('.btn.next');
+  if (!scroller) return;
 
-    scroller.addEventListener('keydown', e => {
-        if (e.key === 'ArrowRight') nextBtn.click();
-        if (e.key === 'ArrowLeft')  prevBtn.click();
-    });
+  const scrollAmount = scroller.clientWidth * 0.8;
+  let isDown = false, startX = 0, scrollLeft = 0;
 
-    scroller.addEventListener('mousedown', (e) => {
-        isDown = true;
-        scroller.classList.add('active');
-        startX = e.pageX - scroller.offsetLeft;
-        scrollLeft = scroller.scrollLeft;
-    });
-    scroller.addEventListener('mouseleave', () => {
-        isDown = false;
-        scroller.classList.remove('active');
-    });
-    scroller.addEventListener('mouseup', () => {
-        isDown = false;
-        scroller.classList.remove('active');
-    });
-    scroller.addEventListener('mousemove', (e) => {
-        if (!isDown) return;
-        e.preventDefault();
-        const x = e.pageX - scroller.offsetLeft;
-        const walk = (x - startX) * 1.5; //scroll-fast
-        scroller.scrollLeft = scrollLeft - walk;
-    });
+  prevBtn?.addEventListener('click', () =>
+    scroller.scrollBy({ left: -scrollAmount, behavior: 'smooth' })
+  );
+  nextBtn?.addEventListener('click', () =>
+    scroller.scrollBy({ left:  scrollAmount, behavior: 'smooth' })
+  );
 
-    window.addEventListener('load', () => {
-        const products = document.querySelectorAll('.product');
-        if (products.length >= 2) {
-            console.log('Height diff:', Math.abs(products[0].offsetHeight - products[1].offsetHeight), 'px');
-        }
-    });
-    // end scroller-products
+  scroller.addEventListener('mousedown', e => {
+    isDown = true;
+    scroller.classList.add('active');
+    startX     = e.pageX - scroller.offsetLeft;
+    scrollLeft = scroller.scrollLeft;
+  });
+  ['mouseup','mouseleave'].forEach(evt =>
+    scroller.addEventListener(evt, () => {
+      isDown = false;
+      scroller.classList.remove('active');
+    })
+  );
+  scroller.addEventListener('mousemove', e => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x    = e.pageX - scroller.offsetLeft;
+    const walk = (x - startX) * 1.5;
+    scroller.scrollLeft = scrollLeft - walk;
+  });
+}
+
+// 2) Для *каждого* блока-обёртки вызываем initScroller
+document
+  .querySelectorAll('.blockScroller')
+  .forEach(wrapper => initScroller(wrapper));
     
 })();
 
 //=======================================
 (function() {
 
+    //universal block for photos
     function initSlider(root, cfg) {
         const imgs = Array.from(root.querySelectorAll(cfg.imageSelector));
         if (!imgs.length) return;
@@ -76,15 +71,6 @@
         }, cfg.interval);
     }
 
-    // const blockRoot = document.querySelector('.block');
-    // initSlider(blockRoot, {
-    //     imageSelector: '.block__image img',
-    //     clsFront: 'block__img--front',
-    //     clsBack1: 'block__img--back1',
-    //     clsBack2: 'block__img--back2',
-    //     interval: 2000
-    // });
-
     document
         .querySelectorAll('.block')
         .forEach(root => initSlider(root, {
@@ -100,8 +86,6 @@
 
 
 //==============================
-
-
 
 ;(function() {
 
@@ -166,7 +150,70 @@
     updateDots();
     startAuto();
 
-
 })();
 
 //=======================================
+
+// (function() {
+
+//     document.addEventListener('DOMContentLoaded', () => {
+//         const slider = document.querySelector('.photoesRecipes__slider');
+//         const track = slider.querySelector('.slider__track');
+//         const sldes = Array.from(track.children);
+//         const btnPrev = slider.querySelector('.slider__btn--prev');
+//         const btnNext = sloder.querySelector('.slider__btn--next');
+//         const dotsContainer = document.querySelector('.slider__dots');
+
+//         const visibleCount = 3;
+//         const slideWidth = slides[0].getBoundingClientRect().width + 
+//         parseInt(getComputedStyle(sldes[0]));
+
+//         slides.forEach((slide, i) => {
+//             slide.style.left = `${i * slideWidth}px`;
+//         });
+
+//         slides.forEach((_, i) => {
+//             const dot = document.createElement('span');
+//             dot.className = 'slider__dot';
+//             if (i === 0) dot.classList.add('slider__dot--active');
+//             dotsContainer.append(dot);
+//             dot.addEventListener('click', () => goToSlide(i));
+//         });
+//         const dots = Array.from(dotsContainer.children);
+
+//         let currentIndex = 0;
+//         function updateSlider() {
+//             track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+//             dots.forEach((d, i) =>
+//             d.classList.toggle('slider__dot--active', i === currentIndex));
+//             btnPrev.disabled = currentIndex === 0;
+//             btnNext.disabled = currentIndex >= slides.length - visibleCount;
+//         }
+
+//         function goToSlide(index) {
+//             currentIndex = Math.min(
+//                 Math.max(0, index),
+//                 slides.length - visibleCount
+//             );
+//             updateSlider();
+//         }
+
+//         btnPrev.addEventListener('click', () => goToSlide(currentIndex - 1));
+//         btnNext.addEventListener('click', () => goToSlide(currentIndex + 1));
+
+//         let autoId = null;
+//         function atartAuto() {
+//             if (autoId) clearInterval(autoId);
+//             autoId = setInterval(() => {
+//                 let next = currentIndex + 1;
+//                 if (next > slides.length - visibleCount) next = 0;
+//                 goToSlide(next);
+//             }, 4000);
+//         }
+//         startAuto();
+
+//         slider.addEventListener('mouseenter', () => clearInterval(autoId));
+//         slider.addEventListener('mouseleave', startAuto);
+//     });
+
+// })();

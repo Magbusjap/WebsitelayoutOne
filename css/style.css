@@ -474,7 +474,9 @@ body {
     margin-top: 15px;
 }
 
+
 /*scroller-products*/
+.blockScroller,
 .products__scroller-products {
     align-items: center;
     position: relative;
@@ -486,6 +488,7 @@ body {
     z-index: 1;
 }
 
+.blockScroller__container,
 .products__scroller-container {
     position: relative;
     overflow: hidden;
@@ -493,6 +496,7 @@ body {
     padding: 2rem 0;
 }
 
+.blockScroller__scroller,
 .scroller-products__scroller {
     display: flex;
     gap: 2rem;
@@ -505,25 +509,22 @@ body {
     cursor: grab;
 }
 
-/* .scroller-products__scroller::before,
-.scroller-products__scroller::after {
-    content: '';
-    flex: 0 0 30px;
-    scroll-snap-align: start;
-} */
-
+.blockScroller__scroller:active,
 .scroller-products__scroller:active {
     cursor: grabbing;
 }
 
+.blockScroller__scroller::-webkit-scrollbar,
 .scroller-products__scroller::-webkit-scrollbar {
     height: 8px;
 }
+.blockScroller__scroller::-webkit-scrollbar-thumb,
 .scroller-products__scroller::-webkit-scrollbar-thumb {
     background: rgba(0,0,0,0.3);
     border-radius: 4px;
 }
 
+.blockScroller__product-items,
 .scroller-products__product-items {
     position: relative;
     flex: 0 0 auto;
@@ -535,12 +536,15 @@ body {
     scroll-snap-align: start;
     margin-top: 0;
 }
+
 /* Zigzag offset */
+.blockScroller__product-items:nth-child(even),
 .scroller-products__product-items:nth-child(even) {
     margin-top: -70px;
 }
 
 /* Background circles */
+.blockScroller__product-items::before,
 .scroller-products__product-items::before {
     content: '';
     position: absolute;
@@ -586,6 +590,7 @@ body {
     margin-bottom: .5rem;
 }
 
+.blockScroller__product-items .btn__buy,
 .scroller-products__product-items .btn__buy {
     transform: translateY(-100%);
     margin: 0 0 0 1.4rem;
@@ -1232,4 +1237,150 @@ body {
     margin-left: 7px;
     margin-top: 43px;
     margin-bottom: 60px;
+}
+
+
+/*========================================================*/
+
+
+.treasures {
+    position: relative;
+    background-color: #F5AFB9;
+    /* height: 100vh; */
+}
+
+.treasures__inner {
+    /* transform: translateY(255px); */
+}
+
+.treasures__block-circle {
+    transform: translate(345px, 195px);
+}
+
+.products__circle-text span {
+    font-family: "Roboto-Regular", sans-serif;
+    font-weight: 700;
+    font-stretch: expanded;
+    letter-spacing: 0.15em;
+}
+
+.treasures__wrapper {
+    display: flex;
+    margin-top: 100px;
+}
+
+.treasures__heading-title {
+    width: 400px;
+}
+
+.treasures__image {
+    position: relative;
+    width: 486px;
+    height: 561px;
+    margin: 50px 200px;
+    overflow: visible;
+}
+
+.treasures__image img {
+    max-width: none;
+    width: auto;
+    height: auto;
+    display: block;
+}
+
+.card {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform-origin: bottom senter;
+    transform: translateX(-50%) rotate(0deg);
+}
+
+.card--center { z-index: 2; }
+.card--left,
+.card--right { z-index: 1; }
+
+@keyframes fan-left {
+    0%, 50%, 100% { transform: translateX(-50%) rotate(0deg); }
+    25%, 75%      { transform: translateX(-80%) rotate(-20deg); }
+}
+@keyframes fan-right {
+    0%, 50%, 100% { transform: translateX(-50%) rotate(0deg); }
+    25%, 75%      { transform: translateX(-40px) rotate(20deg); }
+}
+
+.card--left { 
+    animation: fan-left 10s ease-in-out infinite; 
+}
+.card--right { 
+    animation: fan-right 10s ease-in-out infinite; 
+}
+
+
+/*===================================================*/
+
+
+.photoesRecipes {
+    position: relative;
+    background-color: #F5AFB9;
+    /* height: 100vh; */
+    padding-top: 300px;
+}
+
+.photoesRecipes__inner {
+    text-align: right;
+}
+
+.photoesRecipes__subtitle {
+    font-family: "Roboto-bold", sans-serif;
+    color: #000;
+    font-weight: 700;
+    font-size: 85px;
+}
+
+.photoesRecipes__title {
+    display: inline-block; 
+    text-align: left;
+    width: 55.5%; 
+    max-width: 100%;  
+    font-family: "Roboto-Regular", sans-serif;
+    color: #000;
+    font-weight: 400;
+    margin-bottom: 0px;
+}
+
+.photoesRecipes__slider {
+    margin-top: 50px;
+}
+
+.slider__track {
+    display: flex;
+    overflow-x: auto;
+    gap: 1.5rem;
+}
+
+.photoesRecipes__slider__item {
+    max-width: 100%;
+    /* display: block; */
+    flex: 0 0 auto;
+    width: 500px;
+
+}
+
+.photoesRecipes__slider__item:nth-child(even) {
+    margin-top: 50px;
+}
+
+.photoesRecipes__slider--tag {
+    margin-top: 43px;
+    color: #000;
+}
+
+.photoesRecipes__slider--subname {
+    margin-top: 20px;
+    font-family: "Roboto-bold", sans-serif;
+    color: #000;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 1.2;
 }
