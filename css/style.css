@@ -1,3 +1,7 @@
+[data-i18n] {
+    white-space: pre-line;
+}
+
 .wrapper {
     min-height: 100%;
     width: 100%;
@@ -140,7 +144,7 @@ body {
 
 .header__language-switch {
     position: absolute;
-    top: 32%;
+    top: 44%;
     right: 30px;
 }
 

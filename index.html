@@ -70,7 +70,12 @@
                 </div>
                 
                 <div class="header__language-switch">
-                    <a class="header__language-link" href="#" data-i18n="header__language-link">EN</a>
+                    <a 
+                    id="langToggler"
+                    class="header__language-link" 
+                    href="#" 
+                    data-i18n="header__language-link"
+                    >EN</a>
                 </div>
             </div>
 
@@ -767,6 +772,7 @@
                             type="email"
                             id="footer-email"
                             class="footer__subscribe-input"
+                            data-i18n="subscribePlaceholder"
                             placeholder="Оставьте свой email">
                         </form>
 
@@ -880,7 +886,7 @@
 
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="js/main.js"></script>
+    <script type="module" src="js/main.js"></script>
 
 </body>
 </html>

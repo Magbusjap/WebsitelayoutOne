@@ -154,66 +154,23 @@ document
 
 //=======================================
 
-// (function() {
+import { applyTranslations } from './i18n.js';
 
-//     document.addEventListener('DOMContentLoaded', () => {
-//         const slider = document.querySelector('.photoesRecipes__slider');
-//         const track = slider.querySelector('.slider__track');
-//         const sldes = Array.from(track.children);
-//         const btnPrev = slider.querySelector('.slider__btn--prev');
-//         const btnNext = sloder.querySelector('.slider__btn--next');
-//         const dotsContainer = document.querySelector('.slider__dots');
+(function() {
+  document.addEventListener('DOMContentLoaded', () => {
+    let lang = 'ru';
+    const btn = document.getElementById('langToggler');
 
-//         const visibleCount = 3;
-//         const slideWidth = slides[0].getBoundingClientRect().width + 
-//         parseInt(getComputedStyle(sldes[0]));
+    async function switchLang() {
+      await applyTranslations(lang);
+      btn.textContent = lang === 'ru' ? 'EN' : 'RU';
+    }
 
-//         slides.forEach((slide, i) => {
-//             slide.style.left = `${i * slideWidth}px`;
-//         });
+    btn.addEventListener('click', () => {
+      lang = lang === 'ru' ? 'en' : 'ru';
+      switchLang();
+    });
 
-//         slides.forEach((_, i) => {
-//             const dot = document.createElement('span');
-//             dot.className = 'slider__dot';
-//             if (i === 0) dot.classList.add('slider__dot--active');
-//             dotsContainer.append(dot);
-//             dot.addEventListener('click', () => goToSlide(i));
-//         });
-//         const dots = Array.from(dotsContainer.children);
-
-//         let currentIndex = 0;
-//         function updateSlider() {
-//             track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
-//             dots.forEach((d, i) =>
-//             d.classList.toggle('slider__dot--active', i === currentIndex));
-//             btnPrev.disabled = currentIndex === 0;
-//             btnNext.disabled = currentIndex >= slides.length - visibleCount;
-//         }
-
-//         function goToSlide(index) {
-//             currentIndex = Math.min(
-//                 Math.max(0, index),
-//                 slides.length - visibleCount
-//             );
-//             updateSlider();
-//         }
-
-//         btnPrev.addEventListener('click', () => goToSlide(currentIndex - 1));
-//         btnNext.addEventListener('click', () => goToSlide(currentIndex + 1));
-
-//         let autoId = null;
-//         function atartAuto() {
-//             if (autoId) clearInterval(autoId);
-//             autoId = setInterval(() => {
-//                 let next = currentIndex + 1;
-//                 if (next > slides.length - visibleCount) next = 0;
-//                 goToSlide(next);
-//             }, 4000);
-//         }
-//         startAuto();
-
-//         slider.addEventListener('mouseenter', () => clearInterval(autoId));
-//         slider.addEventListener('mouseleave', startAuto);
-//     });
-
-// })();
+    switchLang(); 
+  });
+})();
